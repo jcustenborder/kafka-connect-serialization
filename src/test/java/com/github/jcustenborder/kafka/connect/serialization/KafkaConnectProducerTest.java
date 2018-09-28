@@ -92,7 +92,9 @@ public class KafkaConnectProducerTest {
     assertNotNull(metadataFuture);
 
     verify(keyConverter, times(1)).configure(anyMap(), eq(true));
+    verify(keyConverter, times(1)).fromConnectData(eq("test"), eq(null), eq(null));
     verify(valueConverter, times(1)).configure(anyMap(), eq(false));
     verify(valueConverter, times(1)).fromConnectData(eq("test"), eq(Schema.STRING_SCHEMA), eq("foo"));
+
   }
 }
